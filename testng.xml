@@ -1,0 +1,23 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+    <test name="setup">
+        <classes>
+            <class name="com.caffee.testDbUtils" />
+        </classes>
+    </test>
+
+    <test name="abstractServices">
+        <classes>
+            <class name="com.caffee.services.AbstractDAOTestCustomers" />
+        </classes>
+    </test>
+
+    <test name="crypt">
+        <classes>
+            <class name="com.caffee.utils.CryptoUtilsTest" />
+        </classes>
+    </test>
+
+</suite>
