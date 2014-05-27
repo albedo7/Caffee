@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite hostname="Kir" name="com.caffee.utils.CryptoUtilsTest" tests="1" failures="0" timestamp="9 May 2014 13:50:19 GMT" time="0.039" errors="0">
+  <testcase name="testDecrypt" time="0.014" classname="com.caffee.utils.CryptoUtilsTest"/>
+</testsuite>

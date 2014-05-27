@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="10" passed="10">
+  <reporter-output>
+  </reporter-output>
+  <suite name="TestAll" duration-ms="1186" started-at="2014-05-09T16:50:18Z" finished-at="2014-05-09T16:50:19Z">
+    <groups>
+    </groups>
+    <test name="setup" duration-ms="1" started-at="2014-05-09T16:50:18Z" finished-at="2014-05-09T16:50:18Z">
+    </test>
+    <test name="crypt" duration-ms="39" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+      <class name="com.caffee.testDbUtils">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="261" started-at="2014-05-09T16:50:17Z" finished-at="2014-05-09T16:50:18Z">
+        </test-method>
+        <test-method status="PASS" signature="shutDown()" name="shutDown" is-config="true" duration-ms="1" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+      </class>
+      <class name="com.caffee.utils.CryptoUtilsTest">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="23" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testDecrypt()" name="testDecrypt" duration-ms="14" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+      </class>
+    </test>
+    <test name="abstractServices" duration-ms="1133" started-at="2014-05-09T16:50:18Z" finished-at="2014-05-09T16:50:19Z">
+      <class name="com.caffee.services.AbstractDAOTestCustomers">
+        <test-method status="PASS" signature="setUp()" name="setUp" is-config="true" duration-ms="212" started-at="2014-05-09T16:50:18Z" finished-at="2014-05-09T16:50:18Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOSaveWithCreditCardType()" name="testAbstractDAOSaveWithCreditCardType" duration-ms="861" started-at="2014-05-09T16:50:18Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOGetWithCreditCardType()" name="testAbstractDAOGetWithCreditCardType" duration-ms="22" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOSaveWithCreditCard()" name="testAbstractDAOSaveWithCreditCard" duration-ms="3" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOGetWithCreditCard()" name="testAbstractDAOGetWithCreditCard" duration-ms="4" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOSaveWithCustomer()" name="testAbstractDAOSaveWithCustomer" duration-ms="1" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAOGetWithCustomer()" name="testAbstractDAOGetWithCustomer" duration-ms="2" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAODeleteWithCustomer()" name="testAbstractDAODeleteWithCustomer" duration-ms="15" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAODeleteWithCreditCard()" name="testAbstractDAODeleteWithCreditCard" duration-ms="2" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+        <test-method status="PASS" signature="testAbstractDAODeleteWithCreditCardType()" name="testAbstractDAODeleteWithCreditCardType" duration-ms="1" started-at="2014-05-09T16:50:19Z" finished-at="2014-05-09T16:50:19Z">
+        </test-method>
+      </class>
+    </test>
+  </suite>
+</testng-results>
