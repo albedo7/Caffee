@@ -7,8 +7,16 @@
 *.jar
 *.war
 *.ear
+
 # Project target&log folders #
+
 target/
 logs/
+
+# IDE files&folders #
+.idea/
+*.iml
+
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*

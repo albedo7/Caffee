@@ -35,6 +35,5 @@ public class CryptoUtilsTest {
         for (String s : decrypted) {
             assertTrue(objects.contains(s));
         }
-
     }
 }
