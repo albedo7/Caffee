@@ -10,8 +10,8 @@
 
 # Project target&log folders #
 
-target/
-logs/
+/target/
+/logs/
 
 # IDE files&folders #
 .idea/

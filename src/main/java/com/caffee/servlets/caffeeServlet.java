@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import java.util.Map;
 
 @Controller
-@RequestMapping({"/","home"})
+@RequestMapping({"index.jsp"})
 public class caffeeServlet {
     @RequestMapping (method = RequestMethod.GET)
     public String showHomePage(Map<String, Object> model) {
