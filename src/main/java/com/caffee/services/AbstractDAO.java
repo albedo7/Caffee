@@ -5,6 +5,8 @@ import com.caffee.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.List;
+
 public class AbstractDAO <E extends DAOEntity> {
     private Class clazz;
 
@@ -35,5 +37,12 @@ public class AbstractDAO <E extends DAOEntity> {
         tx.commit();
         session.close();
         return true;
+    }
+
+    public synchronized List<E> getAllBeans() {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        List<E> result= session.createCriteria(clazz).list();
+        session.close();
+        return result;
     }
 }
