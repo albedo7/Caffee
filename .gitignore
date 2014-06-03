@@ -10,11 +10,12 @@
 
 # Project target&log folders #
 
-/target/
-/logs/
+/target/*
+/logs/*
+*.log
 
 # IDE files&folders #
-.idea/
+.idea/*
 *.iml
 
 
