@@ -49,7 +49,7 @@ CREATE TABLE orders
 (
     ID int PRIMARY KEY AUTO_INCREMENT NOT NULL,
     CUSTOMER_ID int NOT NULL REFERENCES customers ( ID ),
-    SUMM decimal(10,2) NOT NULL,
+    SUMM decimal(10,2) NOT NULL
 );
 CREATE INDEX FK_CUSTOMER_ID_idx ON orders ( CUSTOMER_ID );
 CREATE TABLE order_meals

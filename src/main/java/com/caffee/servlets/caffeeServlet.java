@@ -14,7 +14,7 @@ public class caffeeServlet {
     @RequestMapping (method = RequestMethod.GET)
     public String showHomePage(Map<String, Object> model) {
         model.put("home", null);
-        return "index";
+        return "caffee";
     }
 }
 

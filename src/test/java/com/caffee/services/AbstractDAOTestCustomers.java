@@ -81,7 +81,7 @@ public class AbstractDAOTestCustomers {
 
     @Test(priority = 1007)
     public void testAbstractDAODeleteWithCustomer(){
-        assertTrue(customerSut.deleteBean(customer.getId()));
+                assertTrue(customerSut.deleteBean(customer.getId()));
     }
 
     @Test(priority = 1008)
