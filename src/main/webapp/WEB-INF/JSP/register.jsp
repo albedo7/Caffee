@@ -31,7 +31,16 @@
             </tr>
             <tr>
                 <td>Credit Card Type:</td>
-                <td><form:select path="creditCardByCreditCardId" items="${cardList}" /></td>
+                <td><form:select path="creditCard.creditCardType.id"
+                                 items="${cardList}" itemValue="id" itemLabel="type"/></td>
+            </tr>
+            <tr>
+                <td>Credit card number:</td>
+                <td><form:input path="creditCard.numHash" /></td>
+            </tr>
+            <tr>
+                <td>Expires(dd-mm-yy):</td>
+                <td><form:input path="creditCard.expDate" /></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" value="Register" /></td>

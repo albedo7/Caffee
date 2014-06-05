@@ -7,9 +7,10 @@ import java.util.Collection;
 @Table(name = "credit_card", schema = "", catalog = "caffe")
 @Entity
 public class CreditCard extends DAOEntity{
+    private long id;
     private String numHash;
     private Timestamp expDate;
-    private CreditCardType creditCardTypeByTypeId;
+    private CreditCardType creditCardType;
     private String salt;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -74,17 +75,17 @@ public class CreditCard extends DAOEntity{
 
     @ManyToOne
     @JoinColumn(name = "TYPE_ID", referencedColumnName = "ID", nullable = false)
-    public CreditCardType getCreditCardTypeByTypeId() {
-        return creditCardTypeByTypeId;
+    public CreditCardType getCreditCardType() {
+        return creditCardType;
     }
 
-    public void setCreditCardTypeByTypeId(CreditCardType creditCardTypeByTypeId) {
-        this.creditCardTypeByTypeId = creditCardTypeByTypeId;
+    public void setCreditCardType(CreditCardType creditCardTypeByTypeId) {
+        this.creditCardType = creditCardTypeByTypeId;
     }
 
     private Collection<Customer> customersesById;
 
-    @OneToMany(mappedBy = "creditCardByCreditCardId")
+    @OneToMany(mappedBy = "creditCard")
     public Collection<Customer> getCustomersesById() {
         return customersesById;
     }

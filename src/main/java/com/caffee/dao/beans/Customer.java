@@ -12,7 +12,7 @@ public class Customer extends DAOEntity{
     private String email;
     private String pwdHash;
     private String salt;
-    private CreditCard creditCardByCreditCardId;
+    private CreditCard creditCard;
     private Collection<OrderEntity> ordersById;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -102,12 +102,12 @@ public class Customer extends DAOEntity{
 
     @ManyToOne
     @JoinColumn(name = "CREDIT_CARD_ID", referencedColumnName = "ID", nullable = false)
-    public CreditCard getCreditCardByCreditCardId() {
-        return creditCardByCreditCardId;
+    public CreditCard getCreditCard() {
+        return creditCard;
     }
 
-    public void setCreditCardByCreditCardId(CreditCard creditCardByCreditCardId) {
-        this.creditCardByCreditCardId = creditCardByCreditCardId;
+    public void setCreditCard(CreditCard creditCardByCreditCardId) {
+        this.creditCard = creditCardByCreditCardId;
     }
 
     @OneToMany(mappedBy = "customersByCustomerId")

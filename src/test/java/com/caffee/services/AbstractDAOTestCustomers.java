@@ -26,7 +26,7 @@ public class AbstractDAOTestCustomers {
         cardType = new CreditCardType();
         cardType.setType("Visa");
         creditCard = new CreditCard();
-        creditCard.setCreditCardTypeByTypeId(cardType);
+        creditCard.setCreditCardType(cardType);
         creditCard.setExpDate(new Timestamp(System.currentTimeMillis() + 100_000_000L));
         creditCard.setSalt(CryptoUtils.doSalt());
         creditCard.setNumHash(CryptoUtils.crypt(CC_NUMBER, creditCard.getSalt()));
@@ -37,7 +37,7 @@ public class AbstractDAOTestCustomers {
         customer.setName("Yuriy");
         customer.setLastName("Kostikoff");
         customer.setEmail("kostikoff@rambler.ru");
-        customer.setCreditCardByCreditCardId(creditCard);
+        customer.setCreditCard(creditCard);
         customer.setPwdHash("later");
         customer.setSalt(CryptoUtils.doSalt());
         customer.setPwdHash(CryptoUtils.crypt(PASSWORD, customer.getSalt()));
