@@ -27,7 +27,7 @@ public class testDbUtils {
         try {
             content = new Scanner(new File("./src/test/resources/CreateTestBase.sql")).useDelimiter("\\Z").next();
             dataSource.getConnection().prepareStatement(content).execute();
-            log.debug("DB Initialized!!!!");
+            log.debug("Test DB initialized");
         } catch (SQLException | FileNotFoundException e) {
             log.error(e);
         }
@@ -36,5 +36,6 @@ public class testDbUtils {
     @AfterSuite
     public void shutDown() {
         server.stop();
+        log.debug("Test DB stopped");
     }
 }

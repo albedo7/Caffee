@@ -1,5 +1,3 @@
-DROP TABLE credit_card IF EXISTS;
-DROP TABLE credit_card_type IF EXISTS;
 CREATE SCHEMA CAFFE;
 SET SCHEMA CAFFE;
 CREATE TABLE credit_card_type

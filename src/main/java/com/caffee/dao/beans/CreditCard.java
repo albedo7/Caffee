@@ -1,15 +1,24 @@
 package com.caffee.dao.beans;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
-import java.sql.Timestamp;
+import javax.validation.constraints.Future;
+import javax.validation.constraints.NotNull;
+import java.util.Calendar;
 import java.util.Collection;
+import java.util.Date;
+import java.util.GregorianCalendar;
 
 @Table(name = "credit_card", schema = "", catalog = "caffe")
 @Entity
 public class CreditCard extends DAOEntity{
     private long id;
     private String numHash;
-    private Timestamp expDate;
+    @DateTimeFormat(pattern="dd-MM-yyyy")
+    @NotNull
+    @Future
+    private Date expDate;
     private CreditCardType creditCardType;
     private String salt;
 
@@ -35,11 +44,11 @@ public class CreditCard extends DAOEntity{
 
     @Column(name = "EXP_DATE", nullable = false, insertable = true, updatable = true, length = 19, precision = 0)
     @Basic
-    public Timestamp getExpDate() {
+    public Date getExpDate() {
         return expDate;
     }
 
-    public void setExpDate(Timestamp expDate) {
+    public void setExpDate(Date expDate) {
         this.expDate = expDate;
     }
 
@@ -59,7 +68,13 @@ public class CreditCard extends DAOEntity{
         if (!(o instanceof CreditCard)) return false;
         CreditCard that = (CreditCard) o;
         if (id != that.id) return false;
-        if (Math.abs(expDate.getTime() - that.expDate.getTime()) > 10000) return false;
+        Calendar thisCal = new GregorianCalendar();
+        Calendar thatCal = new GregorianCalendar();
+        thisCal.setTime(expDate);
+        thatCal.setTime(that.expDate);
+        if (thisCal.get(Calendar.YEAR) != thatCal.get(Calendar.YEAR) ||
+            thisCal.get(Calendar.MONTH) != thatCal.get(Calendar.MONTH) ||
+            thisCal.get(Calendar.DAY_OF_MONTH) != thatCal.get(Calendar.DAY_OF_MONTH)) return false;
         if (!numHash.equals(that.numHash)) return false;
         if (!salt.equals(that.salt)) return false;
         return true;
