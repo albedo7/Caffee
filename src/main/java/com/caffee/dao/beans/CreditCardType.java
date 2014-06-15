@@ -1,11 +1,13 @@
 package com.caffee.dao.beans;
 
+import com.caffee.dao.DAOEntity;
+
 import javax.persistence.*;
 import java.util.Collection;
 
 @Table(name = "credit_card_type", schema = "", catalog = "caffe")
 @Entity
-public class CreditCardType extends DAOEntity{
+public class CreditCardType extends DAOEntity {
     private String type;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -50,7 +52,7 @@ public class CreditCardType extends DAOEntity{
 
     private Collection<CreditCard> creditCardsById;
 
-    @OneToMany(mappedBy = "creditCardTypeByTypeId", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "creditCardType", fetch = FetchType.EAGER)
     public Collection<CreditCard> getCreditCardsById() {
         return creditCardsById;
     }

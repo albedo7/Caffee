@@ -1,6 +1,6 @@
 package com.caffee.services;
 
-import com.caffee.dao.beans.DAOEntity;
+import com.caffee.dao.DAOEntity;
 import com.caffee.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -8,7 +8,9 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class AbstractDAO <E extends DAOEntity> {
-    private Class clazz;
+    protected Class clazz;
+
+    protected AbstractDAO(){}
 
     public AbstractDAO(Class clazz) {
         this.clazz = clazz;

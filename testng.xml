@@ -20,4 +20,10 @@
         </classes>
     </test>
 
+    <test name="USerDAO">
+        <classes>
+            <class name="com.caffee.services.TestUserDAO" />
+        </classes>
+    </test>
+
 </suite>
