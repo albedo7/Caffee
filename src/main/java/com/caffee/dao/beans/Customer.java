@@ -1,18 +1,30 @@
 package com.caffee.dao.beans;
 
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.Collection;
 
 
 @Table(name = "customers", schema = "", catalog = "caffe")
 @Entity
 public class Customer extends DAOEntity{
+    @NotNull @Size(min = 2, max = 20)
     private String name;
+    @NotNull @Size(min = 2, max = 20)
     private String lastName;
+    @NotNull @NotEmpty @Email
     private String email;
+    @NotNull @NotEmpty
     private String pwdHash;
     private String salt;
-    private CreditCard creditCardByCreditCardId;
+    @Valid
+    private CreditCard creditCard;
     private Collection<OrderEntity> ordersById;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
@@ -102,12 +114,12 @@ public class Customer extends DAOEntity{
 
     @ManyToOne
     @JoinColumn(name = "CREDIT_CARD_ID", referencedColumnName = "ID", nullable = false)
-    public CreditCard getCreditCardByCreditCardId() {
-        return creditCardByCreditCardId;
+    public CreditCard getCreditCard() {
+        return creditCard;
     }
 
-    public void setCreditCardByCreditCardId(CreditCard creditCardByCreditCardId) {
-        this.creditCardByCreditCardId = creditCardByCreditCardId;
+    public void setCreditCard(CreditCard creditCardByCreditCardId) {
+        this.creditCard = creditCardByCreditCardId;
     }
 
     @OneToMany(mappedBy = "customersByCustomerId")

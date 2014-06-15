@@ -7,7 +7,7 @@ import com.caffee.utils.CryptoUtils;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.sql.Timestamp;
+import java.util.Date;
 
 import static org.testng.AssertJUnit.*;
 
@@ -26,8 +26,8 @@ public class AbstractDAOTestCustomers {
         cardType = new CreditCardType();
         cardType.setType("Visa");
         creditCard = new CreditCard();
-        creditCard.setCreditCardTypeByTypeId(cardType);
-        creditCard.setExpDate(new Timestamp(System.currentTimeMillis() + 100_000_000L));
+        creditCard.setCreditCardType(cardType);
+        creditCard.setExpDate(new Date(System.currentTimeMillis() + 100_000_000L));
         creditCard.setSalt(CryptoUtils.doSalt());
         creditCard.setNumHash(CryptoUtils.crypt(CC_NUMBER, creditCard.getSalt()));
         creditCardTypeSut = new AbstractDAO<>(CreditCardType.class);
@@ -37,7 +37,7 @@ public class AbstractDAOTestCustomers {
         customer.setName("Yuriy");
         customer.setLastName("Kostikoff");
         customer.setEmail("kostikoff@rambler.ru");
-        customer.setCreditCardByCreditCardId(creditCard);
+        customer.setCreditCard(creditCard);
         customer.setPwdHash("later");
         customer.setSalt(CryptoUtils.doSalt());
         customer.setPwdHash(CryptoUtils.crypt(PASSWORD, customer.getSalt()));

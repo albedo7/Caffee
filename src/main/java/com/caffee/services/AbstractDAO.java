@@ -8,7 +8,9 @@ import org.hibernate.Transaction;
 import java.util.List;
 
 public class AbstractDAO <E extends DAOEntity> {
-    private Class clazz;
+    protected Class clazz;
+
+    protected AbstractDAO(){}
 
     public AbstractDAO(Class clazz) {
         this.clazz = clazz;
