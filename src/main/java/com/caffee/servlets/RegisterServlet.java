@@ -3,7 +3,7 @@ package com.caffee.servlets;
 import com.caffee.dao.beans.CreditCard;
 import com.caffee.dao.beans.CreditCardType;
 import com.caffee.dao.beans.Customer;
-import com.caffee.services.AbstractDAO;
+import com.caffee.services.DAOService;
 import com.caffee.utils.CryptoUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -12,17 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.annotation.Resource;
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Map;
 
 @Controller
-//@Scope("session")
 @SessionAttributes("customer")
 @RequestMapping (value = "/register")
     public class RegisterServlet {
-    private AbstractDAO<CreditCardType> cardTypesDAO = new AbstractDAO<>(CreditCardType.class);
-    private AbstractDAO<Customer> customerDAO = new AbstractDAO<>(Customer.class);
-    private AbstractDAO<CreditCard> creditCardDAO = new AbstractDAO<>(CreditCard.class);
+    @Resource
+    private DAOService<CreditCardType> cardTypesDAO;
+    @Resource
+    private DAOService<Customer> customerDAO;
+    @Resource
+    private DAOService<CreditCard> creditCardDAO;
 
 
     /*@InitBinder
@@ -41,9 +45,9 @@ import java.util.Map;
 
     @RequestMapping (method = RequestMethod.GET)
     public String viewRegistration(Map<String, Object> model) {
-        //Customer userForm = new Customer();
         model.put("userForm", new Customer());
-        model.put("cardList", cardTypesDAO.getAllBeans());
+        List<CreditCardType> cardTypes = cardTypesDAO.getAllBeans();
+        model.put("cardList", cardTypes);
         return "register";
     }
 
@@ -56,10 +60,10 @@ import java.util.Map;
         user.setSalt(CryptoUtils.doSalt());
         user.setPwdHash(CryptoUtils.crypt(user.getPwdHash(), user.getSalt()));
         CreditCard creditCard = user.getCreditCard();
-        creditCard.setSalt(CryptoUtils.doSalt());
-        creditCard.setNumHash(CryptoUtils.crypt(creditCard.getNumHash(), creditCard.getSalt()));
+        creditCard.crypt();
         creditCardDAO.saveBean(creditCard);
         customerDAO.saveBean(user);
+        model.put("customer", user);
         return "successRegister";
     }
 }

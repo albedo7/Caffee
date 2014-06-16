@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.Map;
 
 @Controller
-@RequestMapping(value = "/menu")
+@RequestMapping(value = "/main")
 @SessionAttributes("customer")
-public class MenuServlet {
+public class MainServlet {
 
     @RequestMapping (method = RequestMethod.GET)
     public String menuView(Map<String, Object> model) {
         if (model.get("customer") == null) {
             model.put("customer", new Customer());
         }
-        return "menu";
+        return "main";
     }
 }

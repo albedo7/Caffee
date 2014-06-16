@@ -4,18 +4,18 @@
 <html>
     <head>
         <title>Caffee</title>
-        <link rel="stylesheet" href="./resources/CSS/caffee_menu.css" type="text/css" />
-        <link rel="stylesheet" href="./resources/CSS/all_pages.css" type="text/css" />
-        <c:import url="login.jsp"/>
+        <link rel="stylesheet" href="./resources/css/caffee_menu.css" type="text/css" />
+        <link rel="stylesheet" href="./resources/css/all_pages.css" type="text/css" />
+        <%--<c:import url="login.jsp"/>--%>
     </head>
 
     <body>
             <ul id="caffee_menu">
-            <li><a href="#"><span>Главная</span></a></li>
-            <li><a href="#"><span>Мои заказы</span></a></li>
-            <li><a href="#"><span>Сделать заказ</span></a></li>
-            <li><a href="#"><span>Регистрация</span></a></li>
-            <li><a href="#"><span>Отзывы</span></a></li>
+            <li><a href="#"><span>Main</span></a></li>
+            <li><a href="#"><span>Menu</span></a></li>
+            <li><a href="#"><span>My orders</span></a></li>
+            <li><a href="./register"><span>Registration</span></a></li>
+            <li><a href="#"><span>Comments</span></a></li>
         </ul>
     </body>
 </html>

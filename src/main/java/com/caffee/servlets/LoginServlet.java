@@ -3,6 +3,7 @@ package com.caffee.servlets;
 import com.caffee.dao.beans.Customer;
 import com.caffee.services.UserDAO;
 import com.caffee.utils.CryptoUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,11 +13,11 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import java.util.Map;
 
 @Controller
-//@Scope("session")
 @SessionAttributes("customer")
 @RequestMapping(value = {"/login", "/logout"})
 public class LoginServlet {
-    private UserDAO userDAO = new UserDAO();
+    @Autowired
+    private UserDAO userDAO;
 
     @RequestMapping (method = RequestMethod.GET)
     public String loginView(Map<String, Object> model) {
@@ -36,12 +37,12 @@ public class LoginServlet {
                 model.put("customer", customer);
             }
         }
-        return "/menu";
+        return "main";
     }
 
     @RequestMapping (method = RequestMethod.POST, params = "logout")
     public String processLogout(Map<String, Object> model) {
         model.put("customer",new Customer());
-        return "/menu";
+        return "main";
     }
 }

@@ -12,15 +12,66 @@
     <context:component-scan base-package="com.caffee.servlets" />
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
     <mvc:annotation-driven validator="validator" />
-    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+   <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/JSP/" />
         <property name="suffix" value=".jsp" />
-    </bean>
+    </bean> -->
+
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
+
+    <bean id="viewResolver"
+          class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass">
+            <value>
+                org.springframework.web.servlet.view.tiles3.TilesView
+            </value>
+        </property>
+       <!-- <property name="prefix" value="/WEB-INF/JSP/" />
+        <property name="suffix" value=".jsp" />-->
+    </bean>
+
+    <bean id="tilesConfigurer"
+          class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/tiles.xml</value>
+            </list>
+        </property>
+    </bean>
+
     <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="/WEB-INF/resources/messages" />
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
+
+    <bean id="сreditCardTypeClass" class="java.lang.Class"
+          factory-method="forName">
+        <constructor-arg value="com.caffee.dao.beans.CreditCardType"/>
+    </bean>
+    <bean id="customerClass" class="java.lang.Class"
+          factory-method="forName">
+        <constructor-arg value="com.caffee.dao.beans.Customer"/>
+    </bean>
+    <bean id="creditCardClass" class="java.lang.Class"
+          factory-method="forName">
+        <constructor-arg value="com.caffee.dao.beans.CreditCard"/>
+    </bean>
+
+    <bean id="userDAO" class="com.caffee.services.UserDAO"/>
+
+    <bean id="cardTypesDAO" class="com.caffee.services.AbstractDAO">
+        <constructor-arg name="clazz" ref="сreditCardTypeClass" />
+    </bean>
+
+    <bean id="customerDAO" class="com.caffee.services.AbstractDAO">
+        <constructor-arg name="clazz" ref="customerClass" />
+    </bean>
+
+    <bean id="creditCardDAO" class="com.caffee.services.AbstractDAO">
+        <constructor-arg name="clazz" ref="creditCardClass" />
+    </bean>
+
 </beans>

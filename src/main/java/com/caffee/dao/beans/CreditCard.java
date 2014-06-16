@@ -1,6 +1,7 @@
 package com.caffee.dao.beans;
 
 import com.caffee.dao.DAOEntity;
+import com.caffee.utils.CryptoUtils;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -62,6 +63,13 @@ public class CreditCard extends DAOEntity {
     public void setSalt(String salt) {
         this.salt = salt;
     }
+
+    public void crypt() {
+        this.setSalt(CryptoUtils.doSalt());
+        this.setNumHash(CryptoUtils.crypt(this.getNumHash(), this.getSalt()));
+    }
+
+
 
     @Override
     public boolean equals(Object o) {

@@ -4,18 +4,24 @@ import com.caffee.dao.DAOEntity;
 import com.caffee.utils.HibernateUtils;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-public class AbstractDAO <E extends DAOEntity> {
-    protected Class clazz;
-
+@Service
+public class AbstractDAO <E extends DAOEntity> implements DAOService<E> {
+    protected Class<E> clazz;
     protected AbstractDAO(){}
 
-    public AbstractDAO(Class clazz) {
+    public AbstractDAO(Class<E> clazz) {
         this.clazz = clazz;
     }
 
+    public Class getClazz() {
+        return clazz;
+    }
+
+    @Override
     public synchronized E getById(long id) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         E result = (E)session.get(clazz, id);
@@ -23,6 +29,7 @@ public class AbstractDAO <E extends DAOEntity> {
         return result;
     }
 
+    @Override
     public synchronized boolean saveBean(E bean) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -32,6 +39,7 @@ public class AbstractDAO <E extends DAOEntity> {
         return true;
     }
 
+    @Override
     public synchronized boolean deleteBean(long id) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
@@ -41,6 +49,7 @@ public class AbstractDAO <E extends DAOEntity> {
         return true;
     }
 
+    @Override
     public synchronized List<E> getAllBeans() {
         Session session = HibernateUtils.getSessionFactory().openSession();
         List<E> result= session.createCriteria(clazz).list();
