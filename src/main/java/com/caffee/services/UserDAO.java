@@ -16,8 +16,7 @@ public class UserDAO extends AbstractDAO <Customer> {
     public Customer getUserByEmail(String email) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Criteria criteria = session.createCriteria(clazz);
-        Customer result = (Customer) criteria.add(Restrictions.eq("email", email))
-                .uniqueResult();
+        Customer result = (Customer) criteria.add(Restrictions.eq("email", email)).uniqueResult();
         session.close();
         return result;
     }

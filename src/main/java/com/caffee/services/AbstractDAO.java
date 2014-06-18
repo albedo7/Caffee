@@ -2,6 +2,7 @@ package com.caffee.services;
 
 import com.caffee.dao.DAOEntity;
 import com.caffee.utils.HibernateUtils;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,13 @@ public class AbstractDAO <E extends DAOEntity> implements DAOService<E> {
     public synchronized boolean saveBean(E bean) {
         Session session = HibernateUtils.getSessionFactory().openSession();
         Transaction tx = session.beginTransaction();
-        session.save(bean);
-        tx.commit();
+        try {
+            session.save(bean);
+            tx.commit();
+        } catch (HibernateException e) {
+            session.close();
+            return false;
+        }
         session.close();
         return true;
     }

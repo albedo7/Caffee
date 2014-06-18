@@ -2,6 +2,7 @@ package com.caffee.dao.beans;
 
 
 import com.caffee.dao.DAOEntity;
+import com.caffee.utils.CryptoUtils;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.context.annotation.Scope;
@@ -92,6 +93,15 @@ public class Customer extends DAOEntity {
 
     public void setSalt(String salt) {
         this.salt = salt;
+    }
+
+    public void crypt() {
+        setSalt(CryptoUtils.doSalt());
+        setPwdHash(CryptoUtils.crypt(pwdHash, salt));
+    }
+
+    public void decrypt() {
+        setPwdHash(CryptoUtils.decrypt(pwdHash, salt));
     }
 
     @Override

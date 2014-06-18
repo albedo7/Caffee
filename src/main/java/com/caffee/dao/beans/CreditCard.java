@@ -65,11 +65,13 @@ public class CreditCard extends DAOEntity {
     }
 
     public void crypt() {
-        this.setSalt(CryptoUtils.doSalt());
-        this.setNumHash(CryptoUtils.crypt(this.getNumHash(), this.getSalt()));
+        setSalt(CryptoUtils.doSalt());
+        setNumHash(CryptoUtils.crypt(numHash, salt));
     }
 
-
+    public void decrypt() {
+        setNumHash(CryptoUtils.decrypt(numHash, salt));
+    }
 
     @Override
     public boolean equals(Object o) {
