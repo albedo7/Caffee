@@ -14,7 +14,7 @@
     </tr>
     <tr>
         <td style="height: 90%; width: 200; position: relative; top:0; left:0"><tiles:insertAttribute name="menu" /></td>
-        <td style="height: 90%; width: 100%; top:0; "><tiles:insertAttribute name="body" /></td>
+        <td style="height: 90%; width: 100%; top:0; position: relative;"><tiles:insertAttribute name="body" /></td>
     </tr>
     <%--<tr>
         <td height="30" colspan="2"><tiles:insertAttribute name="footer" />

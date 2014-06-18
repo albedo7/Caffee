@@ -25,5 +25,4 @@
         <put-attribute name="body" value="/WEB-INF/JSP/successRegister.jsp" />
     </definition>
 
-
 </tiles-definitions>
