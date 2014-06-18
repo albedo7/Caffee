@@ -6,7 +6,6 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Caffee</title>
     </head>
     <body>
         <div align="right">
