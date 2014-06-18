@@ -11,7 +11,7 @@
 
     <body>
             <ul id="caffee_menu">
-            <li><a href="#"><span>Main</span></a></li>
+            <li><a href="./main"><span>Main</span></a></li>
             <li><a href="#"><span>Menu</span></a></li>
             <li><a href="#"><span>My orders</span></a></li>
             <li><a href="./register"><span>Registration</span></a></li>

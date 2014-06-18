@@ -4,17 +4,17 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title><tiles:insertAttribute name="title" ignore="true" /></title>
+    <title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" align="center">
+<table border="0" cellpadding="0" cellspacing="0" style=""position: absolute; top: 0; bottom: 0; left: 0; right: 0;"">
     <tr>
-        <td height="30" colspan="0"><tiles:insertAttribute name="header" />
+        <td style="height:30; width: 200; position: relative; right:0" colspan="0"><tiles:insertAttribute name="header" />
         </td>
     </tr>
     <tr>
-        <td><tiles:insertAttribute name="menu" /></td>
-        <td width="650"><tiles:insertAttribute name="body" /></td>
+        <td style="height: 90%; width: 200; position: absolute; top:0; left:0"><tiles:insertAttribute name="menu" /></td>
+        <td style="height: 90%; width: 100%; top:0; "><tiles:insertAttribute name="body" /></td>
     </tr>
     <%--<tr>
         <td height="30" colspan="2"><tiles:insertAttribute name="footer" />
