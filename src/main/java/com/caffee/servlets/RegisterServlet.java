@@ -6,6 +6,7 @@ import com.caffee.dao.beans.Customer;
 import com.caffee.services.DAOService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -66,7 +67,7 @@ import java.util.Map;
             }
         }
         /*ToDo put errors in form!!!*/
-        creditCardDAO.deleteBean(creditCard.getId()); //if user havn't been saved, but his credit card have been saved we have to remove this credit card
+        creditCardDAO.deleteBean(creditCard.getId()); //if user haven't been saved, but his credit card have been saved we have to remove this credit card
         model.put("cardList", cardTypesDAO.getAllBeans());
         user.decrypt();
         creditCard.decrypt();

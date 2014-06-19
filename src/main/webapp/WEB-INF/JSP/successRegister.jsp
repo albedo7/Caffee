@@ -1,5 +1,5 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
     <title>Caffee</title>
@@ -32,14 +32,14 @@
             </tr>
             <tr>
                 <td>Credit Card Type:</td>
-                <td><${userForm.creditCard.creditCardType.type}</tr>
+                <td>${userForm.creditCard.creditCardType.type}</tr>
             <tr>
                 <td>Credit card number:</td>
                 <td>${userForm.creditCard.numHash}</td>
             </tr>
             <tr>
                 <td>Expires:</td>
-                <td>${userForm.creditCard.expDate}</td>
+                <td><fmt:formatDate value="${userForm.creditCard.expDate}" pattern="dd-MM-yyyy" /></td>
             </tr>
 
         </table>
