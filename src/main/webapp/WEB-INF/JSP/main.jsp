@@ -7,19 +7,15 @@
     <title><tiles:insertAttribute name="title" ignore="true"/></title>
 </head>
 <body>
-<table border="0" cellpadding="0" cellspacing="0" style="position: absolute; top: 0; bottom: 0; left: 0; right: 0;">
-    <tr>
-        <td style="height:30; width: 200; position: relative; right:0" colspan="0"><tiles:insertAttribute name="header" />
-        </td>
-    </tr>
-    <tr>
-        <td style="height: 90%; width: 200; position: relative; top:0; left:0"><tiles:insertAttribute name="menu" /></td>
-        <td style="height: 90%; width: 100%; top:0; position: relative;"><tiles:insertAttribute name="body" /></td>
-    </tr>
-    <%--<tr>
-        <td height="30" colspan="2"><tiles:insertAttribute name="footer" />
-        </td>
-    </tr>--%>
-</table>
+    <table border="0" cellpadding="0" cellspacing="0" style=" top: 0; bottom: 0; left: 0; right: 0;">
+        <tr>
+            <td style="height:200; right:0" colspan="2"><tiles:insertAttribute name="header" />
+            </td>
+        </tr>
+        <tr>
+            <td style="width: 200; top:0; left:0"><tiles:insertAttribute name="menu" /></td>
+            <td style="width: 100%; top:0; "><tiles:insertAttribute name="body" /></td>
+        </tr>
+    </table>
 </body>
 </html>

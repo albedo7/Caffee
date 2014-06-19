@@ -47,15 +47,15 @@ public class OrderMealsEntity {
         this.orderByOrderId = orderByOrderId;
     }
 
-    private MealsEntity mealsByMealsId;
+    private Meal mealsByMealsId;
 
     @ManyToOne
     @JoinColumn(name = "MEALS_ID", referencedColumnName = "ID", nullable = false)
-    public MealsEntity getMealsByMealsId() {
+    public Meal getMealsByMealsId() {
         return mealsByMealsId;
     }
 
-    public void setMealsByMealsId(MealsEntity mealsByMealsId) {
+    public void setMealsByMealsId(Meal mealsByMealsId) {
         this.mealsByMealsId = mealsByMealsId;
     }
 }

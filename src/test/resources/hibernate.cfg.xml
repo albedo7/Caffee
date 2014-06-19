@@ -13,7 +13,7 @@
       <mapping class="com.caffee.dao.beans.CreditCardType"/>
       <mapping class="com.caffee.dao.beans.Customer"/>
       <mapping class="com.caffee.dao.beans.MealType"/>
-      <mapping class="com.caffee.dao.beans.MealsEntity"/>
+      <mapping class="com.caffee.dao.beans.Meal"/>
       <mapping class="com.caffee.dao.beans.OrderEntity"/>
       <mapping class="com.caffee.dao.beans.OrderMealsEntity"/>
   </session-factory>

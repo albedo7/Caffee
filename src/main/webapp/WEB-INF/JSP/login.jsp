@@ -6,29 +6,23 @@
 "http://www.w3.org/TR/html4/loose.dtd">
 <html>
     <head>
-        <title>Caffee</title>
     </head>
     <body>
         <div align="right">
             <c:choose>
                 <c:when test="${not empty (customer.name)}">
                     <form:form action="logout" method="post" modelAttribute="">
-                    <td colspan="1" align="right">
                         <h5>Welcome, ${customer.name} ${customer.lastName}!
                             <button type="submit" value="logout" name="logout"
                             style="background-color:transparent; border-color:transparent;">
                                 <img src="./resources/images/logout_button_0.png" height="20" width="80"/>
                             </button>
                         </h5>
-                    </td>
                     </form:form>
                 </c:when>
                 <c:otherwise>
                     <form:form action="login" method="post" commandName="customer">
                         <table border="0">
-                            <%--<tr>
-                                <td colspan="2" align="center"><h2>Customer login</h2></td>
-                            </tr>--%>
                             <tr>
                                 <td>Email:</td>
                                 <td><form:input path="email" /></td>

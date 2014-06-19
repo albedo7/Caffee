@@ -60,6 +60,11 @@
         <constructor-arg value="com.caffee.dao.beans.CreditCard"/>
     </bean>
 
+    <bean id="mealClass" class="java.lang.Class"
+          factory-method="forName">
+        <constructor-arg value="com.caffee.dao.beans.Meal"/>
+    </bean>
+
     <bean id="userDAO" class="com.caffee.services.UserDAO"/>
 
     <bean id="cardTypesDAO" class="com.caffee.services.AbstractDAO">
@@ -72,6 +77,10 @@
 
     <bean id="creditCardDAO" class="com.caffee.services.AbstractDAO">
         <constructor-arg name="clazz" ref="creditCardClass" />
+    </bean>
+
+    <bean id="meals" class="com.caffee.services.AbstractDAO" >
+        <constructor-arg name="clazz" ref="mealClass" />
     </bean>
 
 </beans>

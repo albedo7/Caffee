@@ -39,7 +39,9 @@ CREATE TABLE meals
     MEAL_TYPE_ID int NOT NULL REFERENCES meal_type ( ID ),
     PRICE decimal(10,2) NOT NULL,
     NAME varchar(45) NOT NULL,
-    PICTURE longblob
+    PICTURE longblob,
+    DESCRIPTION VARCHAR(256)
+
 );
 CREATE UNIQUE INDEX NAME_UNIQUE ON meals ( NAME );
 CREATE INDEX FK_MEAL_TYPE_ID_idx ON meals ( MEAL_TYPE_ID );

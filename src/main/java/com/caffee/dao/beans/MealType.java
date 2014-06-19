@@ -1,21 +1,17 @@
 package com.caffee.dao.beans;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import com.caffee.dao.DAOEntity;
+
+import javax.persistence.*;
 import java.util.Collection;
 
 @Table(name = "meal_type", schema = "", catalog = "caffe")
 @Entity
-public class MealType {
-    private long id;
+public class MealType extends DAOEntity{
     private String type;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
@@ -51,14 +47,14 @@ public class MealType {
         return result;
     }
 
-    private Collection<MealsEntity> mealsesById;
+    private Collection<Meal> mealsesById;
 
     @OneToMany(mappedBy = "mealTypeByMealTypeId")
-    public Collection<MealsEntity> getMealsesById() {
+    public Collection<Meal> getMealsesById() {
         return mealsesById;
     }
 
-    public void setMealsesById(Collection<MealsEntity> mealsesById) {
+    public void setMealsesById(Collection<Meal> mealsesById) {
         this.mealsesById = mealsesById;
     }
 }

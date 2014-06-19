@@ -2,7 +2,6 @@ package com.caffee.servlets;
 
 import com.caffee.dao.beans.Customer;
 import com.caffee.services.UserDAO;
-import com.caffee.utils.CryptoUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -32,9 +31,10 @@ public class LoginServlet {
                                       Map<String, Object> model) {
         Customer customer = userDAO.getUserByEmail(user.getEmail());
         if (customer != null) {
-            customer.setPwdHash(CryptoUtils.decrypt(customer.getPwdHash(), customer.getSalt()));
+            customer.decrypt();
             if (user.getPwdHash().equals(customer.getPwdHash())) {
-                model.put("customer", customer);
+                customer.getCreditCard().decrypt();
+                    model.put("customer", customer);
             }
         }
         return "main";
