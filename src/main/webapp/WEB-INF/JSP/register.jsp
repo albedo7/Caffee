@@ -1,13 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html>
-  <head>
-    <title>Caffee</title>
-  </head>
-<body>
 <div align="center">
     <form:form action="register" method="post" commandName="userForm">
         <table border="0">
@@ -60,5 +53,3 @@
         </table>
     </form:form>
 </div>
-</body>
-</html>

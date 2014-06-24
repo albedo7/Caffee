@@ -13,11 +13,6 @@
     <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/"/>
     <mvc:annotation-driven validator="validator" />
 
-   <!-- <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/WEB-INF/JSP/" />
-        <property name="suffix" value=".jsp" />
-    </bean> -->
-
     <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" >
         <property name="validationMessageSource" ref="messageSource" />
     </bean>
@@ -29,8 +24,6 @@
                 org.springframework.web.servlet.view.tiles3.TilesView
             </value>
         </property>
-       <!-- <property name="prefix" value="/WEB-INF/JSP/" />
-        <property name="suffix" value=".jsp" />-->
     </bean>
 
     <bean id="tilesConfigurer"
@@ -82,5 +75,4 @@
     <bean id="meals" class="com.caffee.services.AbstractDAO" >
         <constructor-arg name="clazz" ref="mealClass" />
     </bean>
-
 </beans>
