@@ -8,9 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
-
 import javax.annotation.Resource;
-import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -26,8 +24,7 @@ public class BookServlet {
             model.put("customer", new Customer());
         }
         if (model.get("mealList") == null) {
-            List<Meal> mealList = meals.getAllBeans();
-            model.put("mealList", mealList);
+            model.put("mealList", meals.getAllBeans());
         }
         return "book";
     }

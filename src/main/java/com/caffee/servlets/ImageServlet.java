@@ -1,4 +1,4 @@
-package com.caffee.dao.beans;
+package com.caffee.servlets;
 
 public class ImageServlet {
 }
