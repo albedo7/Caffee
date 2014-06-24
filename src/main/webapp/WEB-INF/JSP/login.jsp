@@ -22,13 +22,10 @@
 
                             <td><h3>Email:</h3></td>
                             <td><h3><form:input path="email" /></h3></td>
-                        </h3>
                     </tr>
                     <tr>
-                        <h3>
-                            <td>Password:</td>
-                            <td><form:password path="pwdHash" /></td>
-                        </h3>
+                            <td><h3>Password:</h3></td>
+                            <td><h3><form:password path="pwdHash" /></h3></td>
                     </tr>
                     <tr>
                     <tr>

@@ -15,13 +15,13 @@ import java.util.Map;
 
 @Controller
 @SessionAttributes({"mealList", "customer"})
-@RequestMapping(value = {"/book", "/resources/image"})
+//@RequestMapping(value = {"/book", "/book/image"})
 public class BookServlet {
     Logger log = Logger.getLogger(BookServlet.class);
     @Resource
     private AbstractDAO<Meal> meals;
 
-    @RequestMapping (method = RequestMethod.GET)
+    @RequestMapping (method = RequestMethod.GET, value = "/book")
     public String bookView(Map<String, Object> model) {
         if (model.get("customer") == null) {
             model.put("customer", new Customer());
@@ -32,13 +32,11 @@ public class BookServlet {
         return "book";
     }
 
-    @RequestMapping (method = RequestMethod.GET, value = "/resources/image/{id}")
-    public void getImage(@PathVariable("id") long mealId, Map<String, Object> model,
-                         HttpServletResponse response) {
-        byte[] picture = meals.getById(mealId).getPicture();
+    @RequestMapping (method = RequestMethod.GET, value = "/book/image", params = "id")
+    public void getImage(@RequestParam(value = "id") long id, HttpServletResponse response) {
         response.setContentType("image/gif");
         try (ServletOutputStream outputStream = response.getOutputStream()) {
-            outputStream.write(picture);
+            outputStream.write(meals.getById(id).getPicture());
             outputStream.flush();
         } catch (IOException e) {
             log.error(e);
