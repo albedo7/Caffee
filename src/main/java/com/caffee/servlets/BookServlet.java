@@ -5,12 +5,19 @@ import com.caffee.dao.beans.Meal;
 import com.caffee.services.AbstractDAO;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import javax.annotation.Resource;
+
 import java.util.Map;
 
 @Controller

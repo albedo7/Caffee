@@ -11,7 +11,11 @@
             <c:forEach var="meal" items="${mealList}">
                 <div>
                     <h1>${meal.name}</h1>
+
                     <img src="<c:url value="/resources/image?id=${meal.id}"/>" alt=""/>
+
+
+
                     <p>${meal.description}</p>
                     <p class="article">${meal.price}</p>
                     <a href="/add" class="demo">Add to order</a>
