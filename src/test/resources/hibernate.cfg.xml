@@ -14,7 +14,7 @@
       <mapping class="com.caffee.dao.beans.Customer"/>
       <mapping class="com.caffee.dao.beans.MealType"/>
       <mapping class="com.caffee.dao.beans.Meal"/>
-      <mapping class="com.caffee.dao.beans.OrderEntity"/>
-      <mapping class="com.caffee.dao.beans.OrderMealsEntity"/>
+      <mapping class="com.caffee.dao.beans.Order"/>
+      <mapping class="com.caffee.dao.beans.OrderMeals"/>
   </session-factory>
 </hibernate-configuration>

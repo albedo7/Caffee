@@ -2,6 +2,7 @@ package com.caffee.services;
 
 import com.caffee.dao.DAOEntity;
 import com.caffee.utils.HibernateUtils;
+import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Service
 public class AbstractDAO <E extends DAOEntity> implements DAOService<E> {
+    private static final Logger log = Logger.getLogger(AbstractDAO.class);
     protected Class<E> clazz;
     protected AbstractDAO(){}
 
@@ -38,6 +40,8 @@ public class AbstractDAO <E extends DAOEntity> implements DAOService<E> {
             session.save(bean);
             tx.commit();
         } catch (HibernateException e) {
+            log.error("Error saving bean " + bean);
+            log.error(e);
             session.close();
             return false;
         }

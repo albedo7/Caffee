@@ -58,6 +58,15 @@
         <constructor-arg value="com.caffee.dao.beans.Meal"/>
     </bean>
 
+    <bean id="orderClass" class="java.lang.Class"
+          factory-method="forName">
+        <constructor-arg value="com.caffee.dao.beans.Order"/>
+    </bean>
+    <bean id="orderMealsClass" class="java.lang.Class"
+            factory-method="forName">
+            <constructor-arg value="com.caffee.dao.beans.OrderMeals" />
+    </bean>
+
     <bean id="userDAO" class="com.caffee.services.UserDAO"/>
 
     <bean id="cardTypesDAO" class="com.caffee.services.AbstractDAO">
@@ -75,4 +84,15 @@
     <bean id="meals" class="com.caffee.services.AbstractDAO" >
         <constructor-arg name="clazz" ref="mealClass" />
     </bean>
+
+    <bean id="orders" class="com.caffee.services.AbstractDAO" >
+        <constructor-arg name="clazz" ref="orderClass" />
+    </bean>
+
+     <bean id="orderMeals" class="com.caffee.services.AbstractDAO">
+         <constructor-arg name="clazz" ref="orderMealsClass" />
+     </bean>
+
+    <bean id="order" class="com.caffee.dao.beans.Order" />
+    <bean id="orderMeal" class="com.caffee.dao.beans.OrderMeals" />
 </beans>

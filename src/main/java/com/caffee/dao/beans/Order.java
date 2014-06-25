@@ -1,21 +1,22 @@
 package com.caffee.dao.beans;
 
+import com.caffee.dao.DAOEntity;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Collection;
 
 @Table(name = "orders", schema = "", catalog = "caffe")
 @Entity
-public class OrderEntity {
-    private int id;
+public class Order extends DAOEntity{
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -36,7 +37,7 @@ public class OrderEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderEntity that = (OrderEntity) o;
+        Order that = (Order) o;
 
         if (id != that.id) return false;
         if (summ != null ? !summ.equals(that.summ) : that.summ != null) return false;
@@ -46,9 +47,9 @@ public class OrderEntity {
 
     @Override
     public int hashCode() {
-        int result = id;
+        long result = id;
         result = 31 * result + (summ != null ? summ.hashCode() : 0);
-        return result;
+        return (int) result;
     }
 
     private Customer customersByCustomerId;
@@ -63,14 +64,14 @@ public class OrderEntity {
         this.customersByCustomerId = customersByCustomerId;
     }
 
-    private Collection<OrderMealsEntity> orderMealsesById;
+    private Collection<OrderMeals> orderMealsesById;
 
-    @OneToMany(mappedBy = "orderByOrderId")
-    public Collection<OrderMealsEntity> getOrderMealsesById() {
+    /*@OneToMany(mappedBy = "orderByOrderId")
+    public Collection<OrderMeals> getOrderMealsesById() {
         return orderMealsesById;
     }
 
-    public void setOrderMealsesById(Collection<OrderMealsEntity> orderMealsesById) {
+    public void setOrderMealsesById(Collection<OrderMeals> orderMealsesById) {
         this.orderMealsesById = orderMealsesById;
-    }
+    }*/
 }

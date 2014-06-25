@@ -31,7 +31,7 @@ public class Customer extends DAOEntity {
     private String salt;
     @Valid
     private CreditCard creditCard;
-    private Collection<OrderEntity> ordersById;
+    private Collection<Order> ordersById;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -138,11 +138,11 @@ public class Customer extends DAOEntity {
     }
 
     @OneToMany(mappedBy = "customersByCustomerId")
-    public Collection<OrderEntity> getOrdersById() {
+    public Collection<Order> getOrdersById() {
         return ordersById;
     }
 
-    public void setOrdersById(Collection<OrderEntity> ordersById) {
+    public void setOrdersById(Collection<Order> ordersById) {
         this.ordersById = ordersById;
     }
 }

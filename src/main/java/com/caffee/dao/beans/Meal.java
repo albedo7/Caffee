@@ -98,14 +98,14 @@ public class Meal extends DAOEntity {
         this.mealTypeByMealTypeId = mealTypeByMealTypeId;
     }
 
-    private Collection<OrderMealsEntity> orderMealsesById;
+    private Collection<OrderMeals> orderMealsesById;
 
     @OneToMany(mappedBy = "mealsByMealsId")
-    public Collection<OrderMealsEntity> getOrderMealsesById() {
+    public Collection<OrderMeals> getOrderMealsesById() {
         return orderMealsesById;
     }
 
-    public void setOrderMealsesById(Collection<OrderMealsEntity> orderMealsesById) {
+    public void setOrderMealsesById(Collection<OrderMeals> orderMealsesById) {
         this.orderMealsesById = orderMealsesById;
     }
 }

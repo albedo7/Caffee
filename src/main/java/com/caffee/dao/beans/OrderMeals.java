@@ -1,24 +1,20 @@
 package com.caffee.dao.beans;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import com.caffee.dao.DAOEntity;
+
+import javax.persistence.*;
 
 @Table(name = "order_meals", schema = "", catalog = "caffe")
 @Entity
-public class OrderMealsEntity {
-    private int id;
+public class OrderMeals extends DAOEntity {
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -26,24 +22,24 @@ public class OrderMealsEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        OrderMealsEntity that = (OrderMealsEntity) o;
+        OrderMeals that = (OrderMeals) o;
         return id == that.id;
     }
 
     @Override
     public int hashCode() {
-        return id;
+        return (int) id;
     }
 
-    private OrderEntity orderByOrderId;
+    private Order orderByOrderId;
 
     @ManyToOne
     @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID", nullable = false)
-    public OrderEntity getOrderByOrderId() {
+    public Order getOrderByOrderId() {
         return orderByOrderId;
     }
 
-    public void setOrderByOrderId(OrderEntity orderByOrderId) {
+    public void setOrderByOrderId(Order orderByOrderId) {
         this.orderByOrderId = orderByOrderId;
     }
 

@@ -8,7 +8,7 @@
         <c:when test="${not empty (customer.name)}">
             <form:form action="logout" method="post" modelAttribute="">
                 <h3>Welcome, ${customer.name} ${customer.lastName}!
-                    <button type="submit" value="logout" name="logout"
+                        <button type="submit" value="logout" name="logout"
                     style="background-color:transparent; border-color:transparent;">
                         <img src="./resources/images/logout_button_0.png" height="20" width="80"/>
                     </button>

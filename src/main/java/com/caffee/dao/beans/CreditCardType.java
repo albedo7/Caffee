@@ -57,9 +57,9 @@ public class CreditCardType extends DAOEntity {
         return creditCardsById;
     }*/
 
-    public void setCreditCardsById(Collection<CreditCard> creditCardsById) {
+   /* public void setCreditCardsById(Collection<CreditCard> creditCardsById) {
         this.creditCardsById = creditCardsById;
-    }
+    }*/
 
     @Override
     public String toString() {
