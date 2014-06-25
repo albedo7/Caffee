@@ -11,11 +11,15 @@
             <c:forEach var="meal" items="${mealList}">
                 <div>
                     <h1>${meal.name}</h1>
+
                     <img src="<c:url value="/book/image">
-                                        <c:param name="id" value="${meal.id}"/>
-                                  </c:url>" alt=""/>
+                        <c:param name="id" value="${meal.id}"/>
+                     </c:url>" alt=""/>
                     <p style="color: black">${meal.description}</p>
                     <p style="color: black" class="article">Price: ${meal.price}</p>
+                    <img src="<c:url value="/resources/image?id=${meal.id}"/>" alt=""/>
+                    <p>${meal.description}</p>
+                    <p class="article">${meal.price}</p>
                     <a href="/add" class="demo">Add to order</a>
                 </div>
             </c:forEach>
