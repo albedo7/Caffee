@@ -3,8 +3,8 @@ package com.caffee.servlets;
 import com.caffee.dao.beans.Customer;
 import com.caffee.dao.beans.Meal;
 import com.caffee.dao.beans.Order;
-import com.caffee.dao.beans.OrderMeals;
 import com.caffee.services.AbstractDAO;
+import com.caffee.services.OrderServices;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,6 @@ import javax.annotation.Resource;
 import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.math.BigDecimal;
 import java.util.Map;
 
 @Controller
@@ -25,15 +24,11 @@ import java.util.Map;
 public class BookServlet {
     Logger log = Logger.getLogger(BookServlet.class);
     @Resource
-    private AbstractDAO<Meal> meals;
-    @Resource
-    private AbstractDAO<Order> orders;
-    @Resource
-    private AbstractDAO<OrderMeals> orderMeals;
+    private AbstractDAO<Meal> mealsDAO;
     @Autowired
-    private Order order;
+    private OrderServices orderServices;
     @Autowired
-    private OrderMeals orderMeal;
+    Order order;
 
     @RequestMapping (method = RequestMethod.GET, value = "/book")
     public String bookView(Map<String, Object> model) {
@@ -41,7 +36,7 @@ public class BookServlet {
             model.put("customer", new Customer());
         }
         if (model.get("mealList") == null) {
-            model.put("mealList", meals.getAllBeans());
+            model.put("mealList", mealsDAO.getAllBeans());
         }
         return "book";
     }
@@ -50,7 +45,7 @@ public class BookServlet {
     public void getImage(@RequestParam(value = "id") long id, HttpServletResponse response) {
         response.setContentType("image/gif");
         try (ServletOutputStream outputStream = response.getOutputStream()) {
-            outputStream.write(meals.getById(id).getPicture());
+            outputStream.write(mealsDAO.getById(id).getPicture());
             outputStream.flush();
             log.info("Picture with id = " + id + " have been read");
         } catch (IOException e) {
@@ -60,25 +55,16 @@ public class BookServlet {
 
     @RequestMapping (method=RequestMethod.GET, value = "/book/add", params = "id")
     public String addToOrder(@RequestParam(value="id") long id, Map<String, Object> model) {
-        if (model.get("order") == null) {
-            model.put("order", order);
-        }
         Customer customer = (Customer) model.get("customer");
         if (customer == null || customer.getId() == 0){
             return "book";
         }
-        order.setCustomersByCustomerId(customer);
-        if (order.getSumm() != null) {
-            order.setSumm(new BigDecimal(order.getSumm().doubleValue()).add(new BigDecimal(meals.getById(id).getPrice().doubleValue())));
-        } else {
-            order.setSumm(new BigDecimal(meals.getById(id).getPrice().doubleValue()));
+        if (model.get("order") == null) {
+            order= orderServices.createOrder(customer);
+            model.put("order", order);
         }
-        if (orders.getById(order.getId()) == null) {
-            orders.saveBean(order);
-        }
-        orderMeal.setOrderByOrderId(order);
-        orderMeal.setMealsByMealsId(meals.getById(id));
-        orderMeals.saveBean(orderMeal);
+        Meal meal = mealsDAO.getById(id);
+        orderServices.addMealToOrder(order, meal);
         return "book";
     }
 }

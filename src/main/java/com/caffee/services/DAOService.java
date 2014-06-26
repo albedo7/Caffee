@@ -11,4 +11,5 @@ public interface DAOService <E extends DAOEntity> {
     public boolean saveBean(E bean);
     public boolean deleteBean(long id);
     public List<E> getAllBeans();
+    public boolean updateBean(E bean);
 }

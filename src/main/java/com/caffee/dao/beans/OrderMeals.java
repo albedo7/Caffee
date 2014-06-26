@@ -8,8 +8,11 @@ import javax.persistence.*;
 @Entity
 public class OrderMeals extends DAOEntity {
 
+    private Order order;
+    private Meal meal;
+
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
@@ -31,27 +34,23 @@ public class OrderMeals extends DAOEntity {
         return (int) id;
     }
 
-    private Order orderByOrderId;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "ORDER_ID", referencedColumnName = "ID", nullable = false)
-    public Order getOrderByOrderId() {
-        return orderByOrderId;
+    public Order getOrder() {
+        return order;
     }
 
-    public void setOrderByOrderId(Order orderByOrderId) {
-        this.orderByOrderId = orderByOrderId;
+    public void setOrder(Order orderByOrderId) {
+        this.order = orderByOrderId;
     }
 
-    private Meal mealsByMealsId;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "MEALS_ID", referencedColumnName = "ID", nullable = false)
-    public Meal getMealsByMealsId() {
-        return mealsByMealsId;
+    public Meal getMeal() {
+        return meal;
     }
 
-    public void setMealsByMealsId(Meal mealsByMealsId) {
-        this.mealsByMealsId = mealsByMealsId;
+    public void setMeal(Meal mealsByMealsId) {
+        this.meal = mealsByMealsId;
     }
 }

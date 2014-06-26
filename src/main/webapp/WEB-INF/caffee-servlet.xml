@@ -40,6 +40,8 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
+
+     <!--Class beans definitions-->
     <bean id="сreditCardTypeClass" class="java.lang.Class"
           factory-method="forName">
         <constructor-arg value="com.caffee.dao.beans.CreditCardType"/>
@@ -67,6 +69,8 @@
             <constructor-arg value="com.caffee.dao.beans.OrderMeals" />
     </bean>
 
+    <!--DAO beans definitions-->
+
     <bean id="userDAO" class="com.caffee.services.UserDAO"/>
 
     <bean id="cardTypesDAO" class="com.caffee.services.AbstractDAO">
@@ -81,7 +85,7 @@
         <constructor-arg name="clazz" ref="creditCardClass" />
     </bean>
 
-    <bean id="meals" class="com.caffee.services.AbstractDAO" >
+    <bean id="mealsDAO" class="com.caffee.services.AbstractDAO" >
         <constructor-arg name="clazz" ref="mealClass" />
     </bean>
 
@@ -93,6 +97,12 @@
          <constructor-arg name="clazz" ref="orderMealsClass" />
      </bean>
 
+    <!--Simple baens definitions-->
+
+    <bean id="orderServices" class="com.caffee.services.OrderServices" />
+
     <bean id="order" class="com.caffee.dao.beans.Order" />
+
     <bean id="orderMeal" class="com.caffee.dao.beans.OrderMeals" />
+
 </beans>

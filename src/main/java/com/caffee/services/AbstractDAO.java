@@ -66,4 +66,22 @@ public class AbstractDAO <E extends DAOEntity> implements DAOService<E> {
         session.close();
         return result;
     }
+
+    @Override
+    public synchronized boolean updateBean(E bean) {
+        Session session = HibernateUtils.getSessionFactory().openSession();
+        try {
+            Transaction tx = session.beginTransaction();
+            session.update(bean);
+            tx.commit();
+            session.close();
+        } catch (HibernateException e) {
+            log.error("Error saving bean " + bean);
+            log.error(e);
+            session.close();
+            return false;
+        }
+        return true;
+    }
+
 }

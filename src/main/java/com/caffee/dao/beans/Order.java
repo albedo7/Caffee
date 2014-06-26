@@ -11,7 +11,7 @@ import java.util.Collection;
 public class Order extends DAOEntity{
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     public long getId() {
         return id;
     }
@@ -54,7 +54,7 @@ public class Order extends DAOEntity{
 
     private Customer customersByCustomerId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID", nullable = false)
     public Customer getCustomersByCustomerId() {
         return customersByCustomerId;
@@ -66,12 +66,12 @@ public class Order extends DAOEntity{
 
     private Collection<OrderMeals> orderMealsesById;
 
-    /*@OneToMany(mappedBy = "orderByOrderId")
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<OrderMeals> getOrderMealsesById() {
         return orderMealsesById;
     }
 
     public void setOrderMealsesById(Collection<OrderMeals> orderMealsesById) {
         this.orderMealsesById = orderMealsesById;
-    }*/
+    }
 }

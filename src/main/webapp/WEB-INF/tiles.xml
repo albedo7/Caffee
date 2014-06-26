@@ -8,6 +8,7 @@
                 template="/WEB-INF/JSP/main.jsp">
         <put-attribute name="header" value="/WEB-INF/JSP/login.jsp" />
         <put-attribute name="menu" value="/WEB-INF/JSP/menu.jsp" />
+        <put-attribute name="order" value="/WEB-INF/JSP/order.jsp" />
     </definition>
 
     <definition name="main" extends="base.definition">

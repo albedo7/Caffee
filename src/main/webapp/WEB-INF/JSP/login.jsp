@@ -5,7 +5,7 @@
 
 <div align="right">
     <c:choose>
-        <c:when test="${not empty (customer.name)}">
+        <c:when test="${not empty (customer.email)}">
             <form:form action="logout" method="post" modelAttribute="">
                 <h3>Welcome, ${customer.name} ${customer.lastName}!
                         <button type="submit" value="logout" name="logout"

@@ -88,7 +88,7 @@ public class Meal extends DAOEntity {
 
     private MealType mealTypeByMealTypeId;
 
-    @ManyToOne
+    @ManyToOne/*(fetch = FetchType.EAGER, cascade = CascadeType.ALL)*/
     @JoinColumn(name = "MEAL_TYPE_ID", referencedColumnName = "ID", nullable = false)
     public MealType getMealTypeByMealTypeId() {
         return mealTypeByMealTypeId;
@@ -100,7 +100,7 @@ public class Meal extends DAOEntity {
 
     private Collection<OrderMeals> orderMealsesById;
 
-    @OneToMany(mappedBy = "mealsByMealsId")
+    @OneToMany/*(mappedBy = "meal", fetch = FetchType.EAGER, cascade = CascadeType.ALL)*/
     public Collection<OrderMeals> getOrderMealsesById() {
         return orderMealsesById;
     }
