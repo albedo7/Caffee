@@ -18,6 +18,7 @@
                     <p style="color: black">${meal.description}</p>
                     <p style="color: black" class="article">Price: ${meal.price}</p>
                     <a class="demo" onclick="addMealToOrder('${meal.id}')">Add to order</a>
+                    <a href="/add" class="demo">Add to order</a>
                 </div>
             </c:forEach>
          </div>

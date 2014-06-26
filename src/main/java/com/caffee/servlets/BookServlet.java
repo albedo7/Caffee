@@ -40,9 +40,6 @@ public class BookServlet {
         if (model.get("customer") == null) {
             model.put("customer", new Customer());
         }
-        if (model.get("mealList") == null) {
-            model.put("mealList", meals.getAllBeans());
-        }
         return "book";
     }
 
