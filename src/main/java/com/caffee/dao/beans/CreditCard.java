@@ -93,10 +93,7 @@ public class CreditCard extends DAOEntity {
 
     @Override
     public int hashCode() {
-        int result = (int)id;
-        result = 31 * result + (numHash != null ? numHash.hashCode() : 0);
-        result = 31 * result + (expDate != null ? expDate.hashCode() : 0);
-        return result;
+        return (int)id;
     }
 
     @ManyToOne

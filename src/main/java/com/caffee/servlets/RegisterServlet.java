@@ -6,7 +6,6 @@ import com.caffee.dao.beans.Customer;
 import com.caffee.services.DAOService;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -60,7 +59,6 @@ import java.util.Map;
         creditCard.crypt();
         if (creditCardDAO.saveBean(creditCard)) {
             if (customerDAO.saveBean(user)) {
-                user.decrypt();
                 creditCard.decrypt();
                 model.put("customer", user);
                 return "successRegister";

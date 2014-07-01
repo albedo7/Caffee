@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
-import java.util.Arrays;
 import java.util.Map;
 
 @Controller
@@ -34,6 +33,7 @@ public class LoginServlet {
         if (customer != null) {
             customer.decrypt();
             if (user.getPwdHash().equals(customer.getPwdHash())) {
+                customer.crypt();
                 customer.getCreditCard().decrypt();
                     model.put("customer", customer);
             }

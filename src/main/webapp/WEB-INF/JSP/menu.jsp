@@ -6,7 +6,7 @@
     <li><a href="./book"><span>Menu</span></a></li>
     <li><a href="#"><span>My orders</span></a></li>
     <c:choose>
-        <c:when test="${not empty (customer.email)}">
+        <c:when test="${not empty (customer.name)}">
             <li><a href="./userData"><span>User information</span></a></li>
         </c:when>
         <c:otherwise>

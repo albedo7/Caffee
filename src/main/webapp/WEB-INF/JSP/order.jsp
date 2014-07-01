@@ -2,8 +2,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt" %>
 
 <c:choose>
-    <c:when test="${empty (customer.email)}">
+    <c:when test="${empty (customer.name)}">
         <c:out value="Please login to create order" />
+        <c:out value="${order}" />
     </c:when>
     <c:otherwise>
         <c:out value="Later here you order should be displayed" />

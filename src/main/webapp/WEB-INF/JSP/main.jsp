@@ -30,13 +30,13 @@
 <body>
     <table border="0" cellpadding="0" cellspacing="0" style=" top: 0; bottom: 0; left: 0; right: 0;">
         <tr>
-            <td style="height:100px; right:0; vertical-align: top; padding-top:0px;" colspan="2"><tiles:insertAttribute name="header" />
+            <td style="height:100px; right:0; vertical-align: top; padding-top:0px;padding-right: 0px;" colspan="3"><tiles:insertAttribute name="header" />
             </td>
         </tr>
         <tr>
             <td style="width: 200px; top: 0; left: 0; vertical-align: top; padding-top: 50px;"><tiles:insertAttribute name="menu" /></td>
-            <td style="width: 100%; top:0; vertical-align: top; padding-top:0px;"><tiles:insertAttribute name="body" /></td>
-            <td style="width: 200px; top: 0; right: 0; vertical-align: top; padding-right: 0px; padding-top: 50px;"><tiles:insertAttribute name="order" /></td>
+            <td style="width: 75%; top:0; vertical-align: top; padding-top:0px;"><tiles:insertAttribute name="body" /></td>
+            <td style="width: 100%; top: 0; right: 0; vertical-align: top; padding-right: 0px; padding-top: 50px;"><tiles:insertAttribute name="order" /></td>
 
         </tr>
     </table>

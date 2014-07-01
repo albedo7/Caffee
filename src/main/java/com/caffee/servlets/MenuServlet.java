@@ -1,4 +1,4 @@
-package com.caffee.servlets;
+/*package com.caffee.servlets;
 
 import com.caffee.dao.beans.Customer;
 import org.springframework.stereotype.Controller;
@@ -20,4 +20,4 @@ public class MenuServlet {
         }
         return "menu";
     }
-}
+}*/
