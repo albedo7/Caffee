@@ -8,7 +8,10 @@ import java.util.Collection;
 
 @Table(name = "orders", schema = "", catalog = "caffe")
 @Entity
-public class Order extends DAOEntity{
+public class Order extends DAOEntity {
+    private Collection<OrderMeals> orderMealsesById;
+    private Customer customersByCustomerId;
+    private BigDecimal summ;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,8 +22,6 @@ public class Order extends DAOEntity{
     public void setId(long id) {
         this.id = id;
     }
-
-    private BigDecimal summ;
 
     @Column(name = "SUMM", nullable = false, insertable = true, updatable = true, length = 10, precision = 2)
     @Basic
@@ -52,8 +53,6 @@ public class Order extends DAOEntity{
         return (int) result;
     }
 
-    private Customer customersByCustomerId;
-
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "CUSTOMER_ID", referencedColumnName = "ID", nullable = false)
     public Customer getCustomersByCustomerId() {
@@ -63,8 +62,6 @@ public class Order extends DAOEntity{
     public void setCustomersByCustomerId(Customer customersByCustomerId) {
         this.customersByCustomerId = customersByCustomerId;
     }
-
-    private Collection<OrderMeals> orderMealsesById;
 
     @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     public Collection<OrderMeals> getOrderMealsesById() {

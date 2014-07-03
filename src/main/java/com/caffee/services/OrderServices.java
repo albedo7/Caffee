@@ -11,11 +11,9 @@ import java.math.BigDecimal;
 
 public class OrderServices {
     @Resource
-    private AbstractDAO<Order>  orders;
+    private OrderDAO orders;
     @Resource
     private AbstractDAO<OrderMeals>  orderMeals;
-    @Resource
-    private AbstractDAO<Meal> mealsDAO;
     @Autowired
     private OrderMeals orderMeal;
     @Autowired
@@ -24,10 +22,6 @@ public class OrderServices {
     public boolean addMealToOrder(Order order, Meal meal) {
         orderMeal.setOrder(order);
         orderMeal.setMeal(meal);
-        //Collection tmp = meal.getOrderMealsesById();
-        //tmp.add(orderMeal);
-        //meal.setOrderMealsesById(tmp);
-        //mealsDAO.saveBean(meal);
         orderMeals.saveBean(orderMeal);
         order.setSumm(new BigDecimal(order.getSumm().doubleValue() + meal.getPrice().doubleValue()));
         orders.updateBean(order);
@@ -42,5 +36,9 @@ public class OrderServices {
         order.setCustomersByCustomerId(customer);
         orders.saveBean(order);
         return order;
+    }
+
+    public Order getCurrentUsersOrder(Customer customer) {
+        return orders.getCurrentUsersOrder(customer);
     }
 }

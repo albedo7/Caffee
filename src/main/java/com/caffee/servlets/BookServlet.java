@@ -59,12 +59,12 @@ public class BookServlet {
         if (customer == null || customer.getId() == 0){
             return "book";
         }
-        if (model.get("order") == null) {
+        if ((order = (Order)model.get("order")) == null) {
             order= orderServices.createOrder(customer);
-            model.put("order", order);
         }
         Meal meal = mealsDAO.getById(id);
         orderServices.addMealToOrder(order, meal);
+        model.put("order", order);
         return "book";
     }
 }

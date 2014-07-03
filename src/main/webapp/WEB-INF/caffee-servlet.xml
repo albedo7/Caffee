@@ -89,8 +89,7 @@
         <constructor-arg name="clazz" ref="mealClass" />
     </bean>
 
-    <bean id="orders" class="com.caffee.services.AbstractDAO" >
-        <constructor-arg name="clazz" ref="orderClass" />
+    <bean id="orders" class="com.caffee.services.OrderDAO" >
     </bean>
 
      <bean id="orderMeals" class="com.caffee.services.AbstractDAO">
