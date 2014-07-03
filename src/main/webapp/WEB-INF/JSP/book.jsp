@@ -17,7 +17,7 @@
                      </c:url>" alt=""/>
                     <p style="color: black">${meal.description}</p>
                     <p style="color: black" class="article">Price: ${meal.price}</p>
-                    <a class="demo" onclick="addMealToOrder('${meal.id}')">Add to order</a>
+                    <a class="demo" id="order" onclick="addMealToOrder('${meal.id}')">Add to order</a>
                 </div>
             </c:forEach>
          </div>

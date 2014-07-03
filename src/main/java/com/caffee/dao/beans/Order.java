@@ -12,6 +12,7 @@ public class Order extends DAOEntity {
     private Collection<OrderMeals> orderMealsesById;
     private Customer customersByCustomerId;
     private BigDecimal summ;
+    private OrderState orderState;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -37,20 +38,15 @@ public class Order extends DAOEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Order that = (Order) o;
-
         if (id != that.id) return false;
         if (summ != null ? !summ.equals(that.summ) : that.summ != null) return false;
-
         return true;
     }
 
     @Override
     public int hashCode() {
-        long result = id;
-        result = 31 * result + (summ != null ? summ.hashCode() : 0);
-        return (int) result;
+        return (int) id;
     }
 
     @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
@@ -70,5 +66,16 @@ public class Order extends DAOEntity {
 
     public void setOrderMealsesById(Collection<OrderMeals> orderMealsesById) {
         this.orderMealsesById = orderMealsesById;
+    }
+
+
+    @JoinColumn(name = "STATE", referencedColumnName = "ID", nullable = false)
+    @ManyToOne
+    public OrderState getOrderState() {
+        return orderState;
+    }
+
+    public void setOrderState(OrderState orderState) {
+        this.orderState = orderState;
     }
 }

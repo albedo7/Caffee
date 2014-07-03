@@ -50,7 +50,7 @@ public class CreditCardType extends DAOEntity {
         return result;
     }
 
-    private Collection<CreditCard> creditCardsById;
+    /*private Collection<CreditCard> creditCardsById;*/
 
    /* @OneToMany(mappedBy = "creditCardType", fetch = FetchType.EAGER)
     public Collection<CreditCard> getCreditCardsById() {
@@ -66,7 +66,6 @@ public class CreditCardType extends DAOEntity {
         return "CreditCardType{" +
                 "id=" + id +
                 ", type='" + type + '\'' +
-                ", creditCardsById=" + creditCardsById +
                 '}';
     }
 }

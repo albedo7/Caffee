@@ -23,6 +23,7 @@ public class CreditCard extends DAOEntity {
     private Date expDate;
     private CreditCardType creditCardType;
     private String salt;
+    private Collection<Customer> customersesById;
 
     @Column(name = "ID", nullable = false, insertable = true, updatable = true, length = 10, precision = 0)
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -105,8 +106,6 @@ public class CreditCard extends DAOEntity {
     public void setCreditCardType(CreditCardType creditCardTypeByTypeId) {
         this.creditCardType = creditCardTypeByTypeId;
     }
-
-    private Collection<Customer> customersesById;
 
     @OneToMany(mappedBy = "creditCard")
     public Collection<Customer> getCustomersesById() {

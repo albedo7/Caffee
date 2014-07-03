@@ -4,7 +4,7 @@ import org.springframework.security.crypto.encrypt.Encryptors;
 import org.springframework.security.crypto.encrypt.TextEncryptor;
 import org.springframework.security.crypto.keygen.KeyGenerators;
 
-public class CryptoUtils {
+public final class CryptoUtils {
     private static final String PASSWORD = "CafeByKir";
 
     public static String crypt(Object obj, String salt) {

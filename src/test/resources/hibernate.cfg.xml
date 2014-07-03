@@ -16,5 +16,6 @@
       <mapping class="com.caffee.dao.beans.Meal"/>
       <mapping class="com.caffee.dao.beans.Order"/>
       <mapping class="com.caffee.dao.beans.OrderMeals"/>
+      <mapping class="com.caffee.dao.beans.OrderState" />
   </session-factory>
 </hibernate-configuration>

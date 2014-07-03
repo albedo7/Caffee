@@ -1,5 +1,7 @@
 package com.caffee.dao;
 
-public class DAOEntity {
+import java.io.Serializable;
+
+public class DAOEntity implements Serializable {
     protected long id;
 }

@@ -18,7 +18,7 @@ function getXMLHttpRequest() {
 function addMealToOrder(id) {
     var xmlHttpRequest = getXMLHttpRequest();
     xmlHttpRequest.onreadystatechange = getReadyStateHandler(xmlHttpRequest);
-    xmlHttpRequest.open("GET", "book/add?id=" + id, true);
+    xmlHttpRequest.open("POST", "book/add?id=" + id, true);
     xmlHttpRequest.setRequestHeader("Content-Type",
         "application/x-www-form-urlencoded");
     xmlHttpRequest.send(null);
@@ -29,12 +29,10 @@ function getReadyStateHandler(xmlHttpRequest) {
     return function() {
         if (xmlHttpRequest.readyState == 4) {
             if (xmlHttpRequest.status == 200) {
-                document.getElementById("body").innerHTML = xmlHttpRequest.responseText;
+                document.getElementById("order").innerHTML = xmlHttpRequest.responseText;
             } else {
                 alert("HTTP error " + xmlHttpRequest.status + ": " + xmlHttpRequest.statusText);
             }
         }
     };
-    window.location='order.jsp';
-    window.location.reload();
 }

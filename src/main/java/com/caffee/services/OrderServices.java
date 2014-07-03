@@ -1,9 +1,6 @@
 package com.caffee.services;
 
-import com.caffee.dao.beans.Customer;
-import com.caffee.dao.beans.Meal;
-import com.caffee.dao.beans.Order;
-import com.caffee.dao.beans.OrderMeals;
+import com.caffee.dao.beans.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.annotation.Resource;
@@ -13,7 +10,7 @@ public class OrderServices {
     @Resource
     private OrderDAO orders;
     @Resource
-    private AbstractDAO<OrderMeals>  orderMeals;
+    private AbstractDAO<OrderMeals> orderMeals;
     @Autowired
     private OrderMeals orderMeal;
     @Autowired
@@ -34,6 +31,9 @@ public class OrderServices {
         }
         order.setSumm(new BigDecimal(0));
         order.setCustomersByCustomerId(customer);
+        OrderState orderState = new OrderState();
+        orderState.setId(1);
+        order.setOrderState(orderState);
         orders.saveBean(order);
         return order;
     }

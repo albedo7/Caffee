@@ -53,7 +53,7 @@ public class BookServlet {
         }
     }
 
-    @RequestMapping (method=RequestMethod.GET, value = "/book/add", params = "id")
+    @RequestMapping (method=RequestMethod.POST, value = "/book/add", params = "id")
     public String addToOrder(@RequestParam(value="id") long id, Map<String, Object> model) {
         Customer customer = (Customer) model.get("customer");
         if (customer == null || customer.getId() == 0){
