@@ -1,4 +1,4 @@
 Caffee
 ======
 
-Cafffe project for autumn performance review
+Caffee project for autumn performance review
